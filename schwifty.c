@@ -7,8 +7,12 @@ void right(char word[]);
 void inc(char word[]);
 void dec(char word[]);
 
-int main() {
-
+int main(argc, char *argv[]) {
+   FILE *fp = fopen("example.txt", "r");
+   if (fp == NULL) {
+      perror("Error opening file");
+      return -1;
+   }
    return 0;
 }
 
