@@ -41,8 +41,10 @@ int main(int argc, char* argv[]) {
       } else if (argument == 'D') {
          dec(word);
       }
+      fprintf("The word is: %c\n", &word);
    }
 }
+
    fclose(fp);
    
    return 0;
@@ -51,17 +53,18 @@ int main(int argc, char* argv[]) {
 
 
 void left(char word[]) {
-   printf("made it here with %s (left)\n", word);
+   //printf("made it here with %s (left)\n", word);
+   FILE *fp = fopen("output.txt", "w");
    for(int i = 0, j = strlen(word); i < strlen(word); i++, j --) {
       if(j == strlen(word)) {
-         printf("%c", word[j - 1]);
+         fprintf(fp, "%c", word[j - 1]);
       }
       else {
-         printf("%c", word[i - 1]);
+         fprintf(fp, "%c", word[i - 1]);
       }
    }
    printf("\n");
-   
+   fclose(fp);
 
    }
    
@@ -70,22 +73,34 @@ void left(char word[]) {
 void right(char word[]) {
    
      //printf("made it here with %s\n", word);
-     for(int i = 0, j = strlen(word); i < strlen(word); i++, j --) {
+     FILE *fp = fopen("output.txt", "w");
+   for(int i = 0, j = strlen(word); i < strlen(word); i++, j --) {
       if(j == strlen(word)) {
-         printf("%c", word[j - 1]);
+         fprintf(fp, "%c", word[j - 1]);
       }
       else {
-         printf("%c", word[i - 1]);
+         fprintf(fp, "%c", word[i - 1]);
       }
    }
    printf("\n");
+   fclose(fp);
 
    }
    
 
 
 void inc(char word[]) {
-   
+   for(int i =0; i < strlen(word); i ++)
+   {
+      if(isalpha(word[i])) {
+         printf("%c", word[i] - 1);
+      }
+      else{
+         printf("%c", word[i]);
+      }
+      
+   }
+   printf("\n");
    
 }
 
@@ -100,9 +115,6 @@ void dec(char word[]) {
       }
       
    }
-      
-   
-
    printf("\n");
    
    }
